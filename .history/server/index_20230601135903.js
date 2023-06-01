@@ -3,19 +3,12 @@ const app = express();
 const cors = require("cors");
 
 app.use(express.json());
-app.use(cors());
+app.use
 
 const db = require("./models");
 
-
-const postRouter = require("./routes/Posts");
-app.use("/posts", postRouter);
-
 db.sequelize.sync().then(() => {
-  app.listen(3003, () => {
+  app.listen(3002, () => {
     console.log("Server Running...");
   });
-})
-.catch((err)=>{
-  console.error("Error syncing the database:", err);
 });
