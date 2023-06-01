@@ -1,12 +1,11 @@
 # Lesson 1
 
-create folder client and server
-
-- cd server
+## create server and Initialize server
 
 Initialize server
 
 ```bash
+cd server
 npm init
 ```
 
