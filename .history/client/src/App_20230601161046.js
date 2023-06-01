@@ -10,12 +10,10 @@ function App() {
         <Link to="/createpost"> Create A Post</Link>
         <Link to="/">Home</Link>
         <Routes>
-          <Route path="/" exact Component={Home} />
-          <Route path="/createpost" exact Component={CreatePost} />
+          <Route path="/" exact Component={Home}/>
+          <Route path="/createpost" exact Component={CreatePost}/>
         </Routes>
       </Router>
     </div>
   );
 }
-
-export default App;
