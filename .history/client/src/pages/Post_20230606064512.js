@@ -5,22 +5,21 @@ import { useParams } from "react-router-dom";
 function Post() {
   let { id } = useParams();
   const [postObject, setPostObject] = useState({});
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState({});
   const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:3003/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
-    axios.get(`http://localhost:3003/comments/${id}`).then((response) => {
-      console.log(response.data);
-      setComments(response.data);
+    const response = axios.get(`http://localhost:3003/comments/${id}`).then((response) => {
+      // console.log(response.data);
     });
+    setComments(response.data);
   }, []);
   const addComment = () => {
     axios.post(`http://localhost:3003/comments`,{commentBody: newComment, PostId: id}).then((response) => {
-      const commentToAdd = {commentBody: newComment}
-      setComments([...comments, commentToAdd]);
+      console.log("Comment added");
     })
   };
   return (
@@ -36,13 +35,13 @@ function Post() {
           <button onClick={addComment}>Add Comment</button>
         </div>
         <div className="listOfComment">
-          {comments.map((comment, key) => {
+          {/* {comments.map((comment, key) => {
             return (
               <div key={key} className="comment">
                 {comment.commentBody}
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     </div>

@@ -5,24 +5,17 @@ import { useParams } from "react-router-dom";
 function Post() {
   let { id } = useParams();
   const [postObject, setPostObject] = useState({});
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  const [comments, setComments] = useState({});
 
   useEffect(() => {
     axios.get(`http://localhost:3003/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
     axios.get(`http://localhost:3003/comments/${id}`).then((response) => {
-      console.log(response.data);
       setComments(response.data);
     });
   }, []);
-  const addComment = () => {
-    axios.post(`http://localhost:3003/comments`,{commentBody: newComment, PostId: id}).then((response) => {
-      const commentToAdd = {commentBody: newComment}
-      setComments([...comments, commentToAdd]);
-    })
-  };
+  cons
   return (
     <div className="postPage">
       <div className="leftSide">
@@ -32,8 +25,8 @@ function Post() {
       </div>
       <div className="rightSide">
         <div className="addCommentContainer">
-          <input type="text" placeholder="Comment..." autoComplete="off" onChange={(event) => {setNewComment(event.target.value)}}/>
-          <button onClick={addComment}>Add Comment</button>
+          <input type="text" placeholder="Comment..." autoComplete="off" />
+          <button>Add Comment</button>
         </div>
         <div className="listOfComment">
           {comments.map((comment, key) => {

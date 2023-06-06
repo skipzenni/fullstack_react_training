@@ -13,14 +13,13 @@ function Post() {
       setPostObject(response.data);
     });
     axios.get(`http://localhost:3003/comments/${id}`).then((response) => {
-      console.log(response.data);
       setComments(response.data);
     });
+    console.log(response.data);
   }, []);
   const addComment = () => {
     axios.post(`http://localhost:3003/comments`,{commentBody: newComment, PostId: id}).then((response) => {
-      const commentToAdd = {commentBody: newComment}
-      setComments([...comments, commentToAdd]);
+      console.log("Comment added");
     })
   };
   return (
