@@ -2,6 +2,9 @@
   "recommendations": [
     "adpyke.codesnap",
     "tabnine.tabnine-vscode",
-    "joeyyizhao.mongo-runner"
+    "joeyyizhao.mongo-runner",
+    "rangav.vscode-thunder-client",
+    "rodrigovallades.es7-react-js-snippets",
+    "visualstudioexptteam.intellicode-api-usage-examples"
   ]
 }
